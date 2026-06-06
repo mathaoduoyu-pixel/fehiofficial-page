@@ -9,46 +9,61 @@
 </head>
 <body>
 
-<div class="bg-wrapper">
-  <div class="bg-blob"></div>
-  <div class="bg-blob"></div>
-  <div class="bg-blob"></div>
-  <div class="bg-dots"></div>
-  <div class="bg-scan"></div>
-  <div class="bg-overlay"></div>
+<!-- ══ INTRO SCREEN ══ -->
+<div id="intro">
+  <canvas id="particleCanvas"></canvas>
+  <div id="intro-content">
+    <div id="welcome-text">welcome to</div>
+    <div id="brand-text">Mathaoduoyu</div>
+    <div id="intro-sub">Bot WhatsApp All-in-One</div>
+    <div id="intro-bar"><div id="intro-bar-fill"></div></div>
+  </div>
 </div>
 
-<div class="container">
+<!-- ══ MAIN LINKTREE ══ -->
+<div id="main" class="hidden">
 
-  <!-- Profile -->
-  <div class="profile-section">
-    <div class="avatar-wrapper">
-      <img class="avatar"
-        src="https://raw.githubusercontent.com/mathaoduoyu-pixel/Menu-bot/main/foto%20utama%20%5B3F78C00%5D.png"
-        alt="Mathaoduoyu"
-        onerror="this.src='https://placehold.co/96x96/111/fff?text=M'"/>
-      <div class="avatar-glow"></div>
-    </div>
-    <div class="profile-name">
-      <span>Mathaoduoyu</span>
-      <span class="verified">✓</span>
-    </div>
-    <div class="profile-bio">
-      <div class="bio-main">⚡ Bot WhatsApp All-in-One</div>
-      <div class="bio-tags">Auto-reply • Download Media • AI Chat • Game</div>
-      <div style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:2px">🚀 Stabil seharian, gampang dipake!</div>
-    </div>
+  <div class="bg-wrapper">
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+    <div class="bg-dots"></div>
+    <div class="bg-scan"></div>
+    <div class="bg-overlay"></div>
   </div>
 
-  <!-- Buttons -->
-  <div class="buttons-section" id="buttons"></div>
+  <div class="container">
 
-  <!-- Footer -->
-  <div class="footer">
-    <div class="footer-brand">Mathaoduoyu</div>
-    <div class="footer-copy">© 2026 Mathaoduoyu. All rights reserved.</div>
+    <!-- Profile -->
+    <div class="profile-section">
+      <div class="avatar-wrapper">
+        <img class="avatar"
+          src="https://raw.githubusercontent.com/mathaoduoyu-pixel/Menu-bot/main/foto%20utama%20%5B3F78C00%5D.png"
+          alt="Mathaoduoyu"
+          onerror="this.src='https://placehold.co/96x96/111/fff?text=M'"/>
+        <div class="avatar-glow"></div>
+      </div>
+      <div class="profile-name">
+        <span>Mathaoduoyu</span>
+        <span class="verified">✓</span>
+      </div>
+      <div class="profile-bio">
+        <div class="bio-main">⚡ Bot WhatsApp All-in-One</div>
+        <div class="bio-tags">Auto-reply • Download Media • AI Chat • Game</div>
+        <div style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:2px">🚀 Stabil seharian, gampang dipake!</div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons-section" id="buttons"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-brand">Mathaoduoyu</div>
+      <div class="footer-copy">© 2026 Mathaoduoyu. All rights reserved.</div>
+    </div>
+
   </div>
-
 </div>
 
 <script src="script.js"></script>
