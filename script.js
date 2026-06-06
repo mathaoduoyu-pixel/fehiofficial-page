@@ -158,19 +158,19 @@ setTimeout(() => {
   const intro = document.getElementById('intro');
   const main  = document.getElementById('main');
 
-  // Step 1: Slide intro UP and off-screen
+  // Step 1: Slide intro UP smoothly
   intro.classList.add('slide-out');
 
-  // Step 2: After 450ms delay, slide main UP from below
-  // This creates the "page scrolling down to reveal content" feel
+  // Step 2: After 300ms (mid-slide), fade+slide main in from slight offset
+  // Feels like one continuous page shift, not two separate moves
   setTimeout(() => {
     main.classList.add('visible');
 
-    // Step 3: Stagger buttons after main starts appearing
+    // Step 3: Stagger buttons — start after main is mostly settled (~700ms into its transition)
     const btns = document.querySelectorAll('.link-btn');
     btns.forEach((btn, i) => {
-      setTimeout(() => btn.classList.add('appear'), 250 + i * 100);
+      setTimeout(() => btn.classList.add('appear'), 500 + i * 110);
     });
-  }, 450);
+  }, 300);
 
 }, INTRO_DURATION);
