@@ -1,10 +1,12 @@
 /* ══════════════════════════════════════
-   PARTICLE + LINE ANIMATION (INTRO)
+   PARTICLE + LINE ANIMATION
+   Canvas is persistent — shared across
+   both intro and main screens
 ══════════════════════════════════════ */
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
-let W, H, particles, lines;
+let W, H;
 const PARTICLE_COUNT = 90;
 const LINE_DIST = 130;
 
@@ -15,7 +17,6 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-// Accent colors
 const COLORS = ['#4ade80', '#22d3ee', '#a855f7', '#facc15'];
 
 function rand(min, max) { return Math.random() * (max - min) + min; }
@@ -32,18 +33,15 @@ function createParticle() {
   };
 }
 
-particles = Array.from({ length: PARTICLE_COUNT }, createParticle);
+const particles = Array.from({ length: PARTICLE_COUNT }, createParticle);
 
 function drawFrame() {
   ctx.clearRect(0, 0, W, H);
 
-  // Update + draw particles
   for (let i = 0; i < particles.length; i++) {
     const p = particles[i];
     p.x += p.vx;
     p.y += p.vy;
-
-    // wrap around
     if (p.x < -10) p.x = W + 10;
     if (p.x > W + 10) p.x = -10;
     if (p.y < -10) p.y = H + 10;
@@ -56,7 +54,6 @@ function drawFrame() {
     ctx.fill();
   }
 
-  // Draw connecting lines
   ctx.globalAlpha = 1;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
@@ -68,7 +65,6 @@ function drawFrame() {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        // gradient line between two particle colors
         const grad = ctx.createLinearGradient(
           particles[i].x, particles[i].y,
           particles[j].x, particles[j].y
@@ -85,47 +81,14 @@ function drawFrame() {
   ctx.globalAlpha = 1;
 }
 
-let introRaf;
-function introLoop() {
+// Particle loop runs forever — canvas never stops
+(function loop() {
   drawFrame();
-  introRaf = requestAnimationFrame(introLoop);
-}
-introLoop();
+  requestAnimationFrame(loop);
+})();
 
 /* ══════════════════════════════════════
-   INTRO → MAIN TRANSITION
-   Total intro: ~4s
-   bar fills 1.6s→3.6s, then slide out
-══════════════════════════════════════ */
-const INTRO_DURATION = 3800; // ms sebelum slide out
-
-setTimeout(() => {
-  const intro = document.getElementById('intro');
-  const main  = document.getElementById('main');
-
-  // Slide intro up, fade main in
-  intro.classList.add('slide-out');
-  main.classList.remove('hidden');
-  // small delay so repaint happens first
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      main.classList.add('visible');
-    });
-  });
-
-  // Stop particle loop after transition done
-  setTimeout(() => cancelAnimationFrame(introRaf), 1200);
-
-  // Stagger button entrance
-  const btns = document.querySelectorAll('.link-btn');
-  btns.forEach((btn, i) => {
-    setTimeout(() => btn.classList.add('appear'), 300 + i * 90);
-  });
-
-}, INTRO_DURATION);
-
-/* ══════════════════════════════════════
-   LINKTREE BUTTONS
+   LINKTREE BUTTONS (build DOM early)
 ══════════════════════════════════════ */
 const BUTTONS = [
   {
@@ -160,7 +123,7 @@ const BUTTONS = [
   }
 ];
 
-const container = document.getElementById("buttons");
+const btnContainer = document.getElementById("buttons");
 BUTTONS.forEach((btn) => {
   const a = document.createElement("a");
   a.href = btn.url;
@@ -178,5 +141,36 @@ BUTTONS.forEach((btn) => {
     </div>
     <span class="btn-arrow">→</span>
   `;
-  container.appendChild(a);
+  btnContainer.appendChild(a);
 });
+
+/* ══════════════════════════════════════
+   TRANSITION
+   Timeline:
+   0ms      → bar starts filling (CSS: 1.6s delay, 2s duration = done at 3.6s)
+   3800ms   → intro slides UP (translateY -110%)
+   4300ms   → main slides UP from below (translateY 0), 500ms gap = clean overlap
+   4500ms+  → buttons stagger in
+══════════════════════════════════════ */
+const INTRO_DURATION = 3800;
+
+setTimeout(() => {
+  const intro = document.getElementById('intro');
+  const main  = document.getElementById('main');
+
+  // Step 1: Slide intro UP and off-screen
+  intro.classList.add('slide-out');
+
+  // Step 2: After 450ms delay, slide main UP from below
+  // This creates the "page scrolling down to reveal content" feel
+  setTimeout(() => {
+    main.classList.add('visible');
+
+    // Step 3: Stagger buttons after main starts appearing
+    const btns = document.querySelectorAll('.link-btn');
+    btns.forEach((btn, i) => {
+      setTimeout(() => btn.classList.add('appear'), 250 + i * 100);
+    });
+  }, 450);
+
+}, INTRO_DURATION);
