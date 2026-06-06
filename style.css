@@ -24,7 +24,7 @@ html, body {
   position: absolute;
   inset: 0;
   background-image: url('https://raw.githubusercontent.com/mathaoduoyu-pixel/Menu-bot/main/Proyek%20Baru%20399%20%5B8903CD7%5D.png');
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;
   filter: brightness(0.28) saturate(1.2);
