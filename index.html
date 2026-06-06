@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mathaoduoyu</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/intro.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+
+  <canvas id="particleCanvas"></canvas>
+
+  <div id="intro">
+    <div id="intro-content">
+      <div id="welcome-text">welcome to</div>
+      <div id="brand-text">Mathaoduoyu</div>
+      <div id="intro-sub">Bot WhatsApp All-in-One</div>
+      <div id="intro-bar">
+        <div id="intro-bar-fill"></div>
+      </div>
+      <div id="intro-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="bg-wrapper">
+      <div class="bg-blob"></div>
+      <div class="bg-blob"></div>
+      <div class="bg-blob"></div>
+      <div class="bg-dots"></div>
+      <div class="bg-scan"></div>
+      <div class="bg-overlay"></div>
+    </div>
+
+    <div class="container">
+      <div class="profile-section">
+        <div class="avatar-wrapper">
+          <img
+            class="avatar"
+            src="https://raw.githubusercontent.com/mathaoduoyu-pixel/Menu-bot/main/foto%20utama%20%5B3F78C00%5D.png"
+            alt="Mathaoduoyu"
+            onerror="this.src='https://placehold.co/96x96/111/fff?text=M'"
+          />
+          <div class="avatar-glow"></div>
+        </div>
+        <div class="profile-name">
+          <span>Mathaoduoyu</span>
+          <span class="verified">✓</span>
+        </div>
+        <div class="profile-bio">
+          <div class="bio-main">⚡ Bot WhatsApp All-in-One</div>
+          <div class="bio-tags">Auto-reply • Download Media • AI Chat • Game</div>
+          <div class="bio-note">🚀 Stabil seharian, gampang dipake!</div>
+        </div>
+      </div>
+
+      <div class="buttons-section" id="buttons"></div>
+
+      <div class="footer">
+        <div class="footer-brand">Mathaoduoyu</div>
+        <div class="footer-copy">© 2026 Mathaoduoyu. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="css/js/particles.js"></script>
+  <script src="css/js/buttons.js"></script>
+  <script src="css/js/transition.js"></script>
+</body>
+</html>
