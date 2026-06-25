@@ -1,0 +1,204 @@
+/* ══════════════════════════════════════════
+   FEHI OFFICIAL — hero.css
+══════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  padding: 10px 0 28px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--teal-dark) 0%, var(--teal) 55%, #06BFA9 100%);
+}
+
+.hero-bg-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.shape { position: absolute; border-radius: 50%; opacity: 0.18; }
+.shape-1 { width: 320px; height: 320px; background: var(--peach); top: -100px; right: -80px; }
+.shape-2 { width: 180px; height: 180px; background: var(--white); bottom: 20px; left: -60px; }
+.shape-3 { width: 100px; height: 100px; background: var(--peach-dark); top: 40%; left: 10%; }
+
+/* ══ BRAND FRAME — desain asli (rounded, lengkungan bawah), full width, polos + garis glow teal di sudut ══ */
+.brand-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 230px;
+  margin: 0 0 16px;
+  border-radius: 14px 14px 32px 32px;
+  padding: 7px;
+  background: linear-gradient(155deg, var(--peach) 0%, var(--peach-dark) 55%, var(--peach-deep) 100%);
+  box-shadow: 0 14px 32px -10px rgba(3,122,110,0.4), 0 4px 12px rgba(0,0,0,0.12);
+  opacity: 1;
+  position: relative;
+}
+
+.brand-frame-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px 12px 29px 29px;
+  background: linear-gradient(150deg, var(--teal) 0%, var(--teal-dark) 100%);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Garis aksen glow hijau di tiap sudut */
+.corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--teal-light);
+  filter: drop-shadow(0 0 4px var(--teal-light));
+  opacity: 0.9;
+}
+.corner-tl { top: 8px; left: 8px; border-right: none; border-bottom: none; border-radius: 6px 0 0 0; }
+.corner-tr { top: 8px; right: 8px; border-left: none; border-bottom: none; border-radius: 0 6px 0 0; }
+.corner-bl { bottom: 8px; left: 8px; border-right: none; border-top: none; border-radius: 0 0 0 14px; }
+.corner-br { bottom: 8px; right: 8px; border-left: none; border-top: none; border-radius: 0 0 14px 0; }
+
+.brand-frame-logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2.5px solid rgba(255,255,255,0.7);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+.brand-frame-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
+.brand-frame-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(14px, 4vw, 18px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.3;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ══ HERO H1 — kecil, pas di HP ══ */
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: clamp(20px, 5.2vw, 27px);
+  line-height: 1.2;
+  margin-bottom: 10px;
+  margin-top: 18px;
+  opacity: 0;
+  animation: fadeup 0.5s ease forwards 0.3s;
+  color: rgba(255,255,255,0.94);
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--peach);
+}
+
+.hero-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.74);
+  max-width: 340px;
+  margin: 0 auto;
+  line-height: 1.55;
+  opacity: 0;
+  animation: fadeup 0.5s ease forwards 0.42s;
+}
+
+/* ══ IDENTITY CARD — naik, rapat ke hero ══ */
+.id-card-wrap {
+  padding: 18px 22px 32px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, #06BFA9 0%, var(--off) 32%);
+}
+.id-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--peach);
+  color: var(--text);
+  border-radius: 6px;
+  box-shadow: 0 24px 48px -12px rgba(3,122,110,0.45), 0 10px 22px rgba(0,0,0,0.16), 0 2px 6px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  position: relative;
+}
+.id-top, .id-bottom { padding: 18px 22px; }
+.id-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+.id-title {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.id-sub { font-size: 12px; color: var(--muted); }
+.id-divider {
+  position: relative;
+  border-top: 1.5px dashed rgba(5,166,148,0.35);
+  margin: 0 4px;
+}
+.id-notch {
+  position: absolute;
+  top: -10px;
+  width: 20px; height: 20px;
+  background: var(--off);
+  border-radius: 50%;
+}
+.id-notch-l { left: -13px; }
+.id-notch-r { right: -13px; }
+.id-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(5,166,148,0.15);
+}
+.id-row:last-child { border-bottom: none; }
+.id-key { color: var(--muted); }
+.id-val { font-weight: 600; color: var(--text); text-align: right; }
+.id-stamp {
+  position: absolute;
+  top: 18px; right: 16px;
+  border: 2px solid var(--teal);
+  color: var(--teal-dark);
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 7px;
+  border-radius: 4px;
+  transform: rotate(8deg);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ══ Small phones — keep everything tight ══ */
+@media (max-width: 380px) {
+  .hero { padding: 14px 0 22px; }
+  .brand-frame { max-height: 200px; margin: 14px 0 12px; }
+  .hero h1 { font-size: clamp(18px, 5vw, 23px); }
+  .id-card-wrap { padding: 14px 18px 26px; }
+}

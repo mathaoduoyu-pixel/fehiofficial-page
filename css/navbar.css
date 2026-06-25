@@ -1,0 +1,172 @@
+/* ══════════════════════════════════════════
+   FEHI OFFICIAL — navbar.css
+══════════════════════════════════════════ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(253, 250, 246, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(5, 166, 148, 0.12);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+  background: rgba(253, 250, 246, 0.97);
+  box-shadow: 0 2px 20px rgba(5, 166, 148, 0.1);
+}
+
+.nav-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 22px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.nav-brand-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 17px;
+  background: linear-gradient(120deg, #037A6E 0%, #05A694 50%, #E8A86A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 7px 11px;
+  border-radius: 8px;
+  transition: color 0.18s, background 0.18s;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--teal-dark);
+  background: rgba(5, 166, 148, 0.13);
+  border-radius: 8px;
+}
+
+.nav-link.active {
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+.nav-cta {
+  background: var(--teal);
+  color: var(--white) !important;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.nav-cta:hover {
+  background: var(--teal-dark) !important;
+  color: var(--white) !important;
+}
+
+/* burger */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--teal-dark);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* mobile nav */
+@media (max-width: 560px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    right: 0;
+    background: rgba(253, 250, 246, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 16px 22px 20px;
+    border-bottom: 1px solid var(--border);
+    gap: 2px;
+    box-shadow: 0 8px 24px rgba(5,166,148,0.1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14.5px;
+  }
+
+  .nav-cta {
+    text-align: center;
+    margin-top: 6px;
+    padding: 12px 14px;
+  }
+
+  .nav-burger {
+    display: flex;
+  }
+}
+
+/* push body down so content not hidden behind fixed navbar */
+body {
+  padding-top: 58px;
+}
